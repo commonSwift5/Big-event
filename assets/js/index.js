@@ -27,18 +27,18 @@ function getUserInfo() {
         //         Authorization: localStorage.getItem('token') || ''
         //     },   
         success: function(res) {
-            if (res.status !== 0) {
-                return layui.layer.msg('获取用户信息失败');
+                if (res.status !== 0) {
+                    return layui.layer.msg('获取用户信息失败');
+                }
+                renderAvatar(res.data)
             }
-            renderAvatar(res.data)
-        },
-        // 渲染用户头像
-        // complete: function(res) {
-        //     if (res.responseJSON.status === 1 && res.responseJSON.message === "身份认证失败！") {
-        //         localStorage.removeItem('token')
-        //         location.href = '/login.html'
-        //     }
-        // }
+            // 渲染用户头像
+            // complete: function(res) {
+            //     if (res.responseJSON.status === 1 && res.responseJSON.message === "身份认证失败！") {
+            //         localStorage.removeItem('token')
+            //         location.href = '/login.html'
+            //     }
+            // }
     })
 }
 
@@ -48,8 +48,8 @@ function renderAvatar(user) {
         // 按需求渲染用户头像
     if (user.user_pic !== null) {
         $('.layui-nav-img')
-            .attr('scr', user.user_pic).show()
-        $('.text.avatar').hide()
+            .attr('src', user.user_pic).show()
+        $('.text-avatar').hide()
     } else {
         $('.layui-nav-img').hide()
         var first = name[0].toUpperCase()
